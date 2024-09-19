@@ -70,7 +70,7 @@
         if(isset($tipo))
         {
             $comando = 'mysqli_stmt_bind_param($stmt,';
-            $comando .= "," . implode('', $tipo). "'";
+            $comando .= "'" . implode('', $tipo). "'";
             $comando .= ', $' . implode(', $', array_keys($dados));
             $comando .= ', $' . implode(', $', $campos_criterio);
             $comando .= ');';
@@ -117,7 +117,7 @@
 
        if(isset($tipo)){
         $comando = 'mysqli_stmt_bind_param($stmt,';
-            $comando .= "," . implode('', $tipo). "'";
+            $comando .= "'" . implode('', $tipo). "'";
             $comando .= ', $' . implode(', $', array_keys($campos_criterio));
             $comando .= ');';
 
@@ -169,8 +169,9 @@
 
         if(isset($tipo)) {
             $comando = 'mysqli_stmt_bind_param($stmt,';
-            $comando .= '\'' . implode('', $tipo) . '\',';
-            $comando .= '$' . implode(', $', $campos_criterio) . ');';
+            $comando .= "'" . implode('', $tipo) . "'";
+            $comando .= ', $' . implode(', $', $campos_criterio);
+            $comando .= ');';
         
             eval($comando);
         }
