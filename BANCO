@@ -14,7 +14,7 @@ CREATE TABLE usuario(
 );
 
 CREATE TABLE post(
-    id into NOT NULL AUTO_INCREMENT,
+    id int NOT NULL AUTO_INCREMENT,
     titulo varchar(255) NOT NULL,
     texto text NOT NULL,
     usuario_id int NOT NULL,
