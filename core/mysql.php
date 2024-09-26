@@ -153,7 +153,7 @@
             $nome_campo = (count($expressao) < 4) ? $expressao[0] : $expressao[1];
 
             if(isset($nome_campo)) {
-                $$nome_campo = $nome_campo . ' ' . rand();
+                $$nome_campo = $nome_campo . '_' . rand();
             }
 
             $campos_criterio[] = $nome_campo;
@@ -189,6 +189,8 @@
         mysqli_stmt_close($stmt);
 
         desconecta($conexao);
+
+        $retorno = $retorno;
 
         return $retorno;
     }

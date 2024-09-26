@@ -48,7 +48,7 @@
                     if(!empty($busca)){
                         $criterio[] = [
                             'AND',
-                            'titulo',
+                            'texto',
                             'like',
                             "%{$busca}%"
                         ];
@@ -75,7 +75,8 @@
                                 $data = date_create($post['data_postagem']);
                                 $data = date_format($data, 'd/m/Y H:i:s');
                         ?>
-                        <a href="post_detalhe.php?post=<?php echo $post['id']?>" class="list-group-ite list-group-item-action">
+                        <a class="list-group-item list-group-item-action"
+                        href="post_detalhe.php?post=<?php echo $post['id']?>">
                             <strong><?php echo $post['titulo']?></strong>
                             [<?php echo $post['nome']?>]
                             <span class="badge badge-dark"><?php echo $data?></span>
