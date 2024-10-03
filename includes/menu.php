@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-header">
-        Menu
+        <strong>MENU</strong>
     </div>
     <div class="card-body">
         <ul class="nav flex-column">
@@ -11,10 +11,10 @@
                 <a href="usuario_formulario.php" class="nav-link">Cadastre-se</a>
             </li>
             <li class="nav-item">
-                <a href="login_formulário.php" class="nav-link">Login</a>
+                <a href="login_formulario.php" class="nav-link">Login</a>
             </li>
             <li class="nav-item">
-                <a href="post_formulario" class="nav-link">Incluir Post</a>
+                <a href="post_formulario.php" class="nav-link">Incluir Post</a>
             </li>
             <?php if((isset($_SESSION['login'])) && ($_SESSION['login']['usuario']['adm'] == 1)) : ?>
             <li class="nav-item">

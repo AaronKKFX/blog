@@ -38,7 +38,7 @@
         foreach($dados as $campo => $dado)
         {
             $coringa_dados[$campo] = '?';
-            $tipo[] =gettype($dado) [0];
+            $tipo[] = gettype($dado) [0];
             $$campo = $dado;
         }
 
@@ -52,7 +52,7 @@
 
             $nome_campo = (count($expressao) < 4) ? $expressao[0] : $expressao[1];
 
-            if(isset($sone_campo)){
+            if(isset($nome_campo)){
                 $nome_campo = $nome_campo . '_' . rand();
             }
 
@@ -105,7 +105,7 @@
 
         $nome_campo = (count($expressao) <4) ? $expressao[0] : $expressao[1];
 
-        $campo_criterio[] = $nome_campo;
+        $campos_criterio[] = $nome_campo;
         $$nome_campo = $dado;
        }
 
@@ -116,7 +116,7 @@
        $stmt = mysqli_prepare($conexao, $instrucao);
 
        if(isset($tipo)){
-        $comando = 'mysqli_stmt_bind_param($stmt,';
+            $comando = 'mysqli_stmt_bind_param($stmt,';
             $comando .= "'" . implode('', $tipo). "'";
             $comando .= ', $' . implode(', $', array_keys($campos_criterio));
             $comando .= ');';
@@ -144,35 +144,36 @@
         $coringa_criterio = [];
 
         foreach ($criterio as $expressao) {
-            $dado = $expressao [count($expressao) -1];
+            $dado = $expressao[count($expressao) -1];
 
-            $tipo[] = gettype($dado) [0];
+            $tipo[] = gettype($dado)[0];
             $expressao[count($expressao) -1] = '?';
             $coringa_criterio[] = $expressao;
 
             $nome_campo = (count($expressao) < 4) ? $expressao[0] : $expressao[1];
 
-            if(isset($nome_campo)) {
-                $$nome_campo = $nome_campo . '_' . rand();
+            if(isset($$nome_campo)) {
+                $nome_campo = $nome_campo . '_' . rand();
             }
 
             $campos_criterio[] = $nome_campo;
 
             $$nome_campo = $dado;
         }
+       
 
         $instrucao = select($entidade, $campos, $coringa_criterio, $ordem);
-
+       
         $conexao = conecta();
 
         $stmt = mysqli_prepare($conexao, $instrucao);
 
         if(isset($tipo)) {
-            $comando = 'mysqli_stmt_bind_param($stmt,';
+            $comando = 'mysqli_stmt_bind_param($stmt, ';
             $comando .= "'" . implode('', $tipo) . "'";
             $comando .= ', $' . implode(', $', $campos_criterio);
             $comando .= ');';
-        
+       
             eval($comando);
         }
 

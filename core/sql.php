@@ -55,10 +55,9 @@
  {
     $instrucao = "SELECT ". implode(', ',$campos);
     $instrucao .= " FROM {$entidade}";
-
-    if(!empty($criteiro)){
+    if(!empty($criterio)){
         $instrucao .= ' WHERE ';
-
+        
         foreach($criterio as $expressao){
             $instrucao .= ' ' .implode(' ',$expressao);
         }
