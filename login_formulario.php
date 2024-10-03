@@ -19,7 +19,7 @@
             </div>
             
             <div class="col-md-10" style="padding-top: 50px;">
-            <div class="card">
+            <div class="card mb-3">
                 <div class="card-header">Login</div>
                     <div class="card-body">
                         <form action="core/usuario_repositorio.php" method="post">
