@@ -16,9 +16,9 @@
             <li class="nav-item">
                 <a href="post_formulario.php" class="nav-link">Incluir Post</a>
             </li>
-            <?php if((isset($_SESSION['login'])) && ($_SESSION['login']['usuario']['adm'] == 1)) : ?>
+            <?php if((isset($_SESSION['login'])) && ($_SESSION['login']['usuario']['adm'] == 1)) : ?> <!--CASO SEJA ADM PÀGINA USUÁRIO APARECE-->
             <li class="nav-item">
-                <a href="usuario.php" class="nav-link">Usuários</a>
+                <a href="usuarios.php" class="nav-link">Usuários</a>
             </li>
             <?php endif; ?>
         </ul>

@@ -8,7 +8,7 @@ require_once 'core/mysql.php';
 foreach ($_GET as $indice => $dado) {
     $$indice = limparDados($dado);
 }
-$posts = buscar(
+$posts = buscar( //FUNÇÃO DE BUSCA NO BANCO
     'post',
     [
         'titulo',
@@ -19,12 +19,12 @@ $posts = buscar(
         where usuario.id = post.usuario_id) as nome'
     ],
     [
-        ['id', '=', $post]
+        ['id', '=', $post] // PEGA O ID CORRESPONDENTE DO POST//
     ]
 );
 $post = $posts[0];
-$data_post = date_create($post['data_postagem']);
-$data_post = date_format($data_post, 'd/m/Y H:i:s');
+$data_post = date_create($post['data_postagem']); //CRIA A DATA DA POSTAGEM PRA PODER USAR NA PARTE DO HTML
+$data_post = date_format($data_post, 'd/m/Y H:i:s'); //FORMATA A DATA 12/12/12 12:30:02
 ?>
 
 <head>
@@ -43,18 +43,19 @@ $data_post = date_format($data_post, 'd/m/Y H:i:s');
             <div class="col-md-12">
                 <?php include 'includes/menu.php'; ?>
             </div>
-            <div class="col-md-10" style="padding-top: 50px;">
+            <!--CARD DO DETALHES DO POST-->
+            <div class="col-md-10 mb-5" style="padding-top: 50px;">
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="card-title"><?php echo $post['titulo'] ?></h5>
+                        <h5 class="card-title"><?php echo $post['titulo'] ?></h5> <!--TÍTULO DO POST-->
                     </div>
                     <div class="card-body">
                         
                         <h5 class="card-subtitle mb-2 text-muted">
-                            <?php echo $data_post ?> Por <?php echo $post['nome'] ?>
+                            <?php echo $data_post ?> Por <?php echo $post['nome'] ?> <!--PUXA DATA DO POST E O NOME DO ÚSUARIO-->
                         </h5>
                         <div class="card-text">
-                            <?php echo html_entity_decode($post['texto']) ?>
+                            <?php echo html_entity_decode($post['texto']) ?> <!--PUXA O TEXTO DO POST-->
                         </div>
                     </div>
                 </div>

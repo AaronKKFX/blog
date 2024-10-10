@@ -39,6 +39,9 @@
                     foreach($_GET as $indice => $dado){
                         $$indice = limparDados($dado);
                     }
+
+                    date_default_timezone_set('America/Sao_Paulo');
+
                     $data_atual = date('Y-m-d H:i:s');
 
                     $criterio = [
@@ -48,7 +51,7 @@
                     if(!empty($busca)){
                         $criterio[] = [
                             'AND',
-                            'texto',
+                            'titulo',
                             'like',
                             "%{$busca}%"
                         ];
@@ -69,7 +72,7 @@
                     );
                 ?>
                 <div>
-                    <div class="list-group mt-3">
+                    <div class="list-group mt-3 mb-3">
                         <?php 
                             foreach($posts as $post):
                                 $data = date_create($post['data_postagem']);

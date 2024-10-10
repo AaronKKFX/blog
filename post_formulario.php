@@ -64,15 +64,15 @@
                             <div class="form-group">
                                 <label for="text">Texto</label>
                                 <textarea class="form-control" type="text"
-                                    required id="texto" name="texto" rows="5"><?php echo $entidade['texto'] ?? '' ?></textarea>
+                                    required id="texto" name="texto" rows="5"><?php echo $entidade['texto'] ?? '' ?></textarea> <!--ENTRA TEXTO-->
                             </div>
                             <div class="form-group">
                                 <label for="texto">Postar em</label>
                                 <?php
                                     $data = (!empty($entidade['data_postagem']))?
-                                        explode(' ', $entidade['data_postagem']) [0] : '';
+                                        explode(' ', $entidade['data_postagem']) [0] : ''; //FORMATO DATA
                                     $hora = (!empty($entidade['data_postagem']))?
-                                        explode(' ', $entidade['data_postagem']) [1] : '';
+                                        explode(' ', $entidade['data_postagem']) [1] : ''; //FORMATO HORA
                                 
                                 ?>
                             <div class="row">
@@ -81,14 +81,14 @@
                                         required
                                         id="data_postagem"
                                         name="data_postagem"
-                                        value="<?php echo $data ?>">
+                                        value="<?php echo $data ?>"> <!--ENTRA DATA-->
                                 </div>
                                 <div class="col-md-3">
                                     <input class="form-control" type="time"
                                         required
                                         id="hora_postagem"
                                         name="hora_postagem"
-                                        value="<?php echo $hora ?>" >
+                                        value="<?php echo $hora ?>" > <!--ENTRA HORA-->
                                 </div>
                             </div>
                         </div>

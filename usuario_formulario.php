@@ -21,7 +21,7 @@
                 require_once 'core/conexao_mysql.php';
                 require_once 'core/sql.php';
                 require_once 'core/mysql.php';
-                if(isset($_SESSION['login'])){
+                if(isset($_SESSION['login'])){ //VERIFICA SE O LOGIN FOI FEITO
                     $id = (int) $_SESSION['login'] ['usuario'] ['id'];
 
                     $criterio = [
@@ -49,15 +49,15 @@
                     <label for="nome">Nome</label>
                     <input class="form-control" type="text"
                         required id="nome" name="nome"
-                        value="<?php echo $entidade['nome'] ?? ''?>">
+                        value="<?php echo $entidade['nome'] ?? ''?>"> <!--CASO PESSOA CADASTRADA VAI PUXAR O NOME-->
                 </div>
                 <div class="form-group">
                     <label for="email">E-mail</label>
-                    <input class="form-control" type="text"
+                    <input class="form-control" type="email"
                     required id="email" name="email"
-                    value="<?php echo $entidade['email'] ?? ''?>">
+                    value="<?php echo $entidade['email'] ?? ''?>"> <!--CASO PESSOA CADASTRADA VAI PUXAR O EMAIL-->
                 </div>
-                <?php if(!isset($_SESSION['login'])) : ?>
+                <?php if(!isset($_SESSION['login'])) : ?> <!--CASO O LOGIN  NÃO ESTEJA FEITO VAI PUXAR ESSA PARTE PARA O CADASTRO-->
                 <div class="form-group">
                     <label for="senha">Senha</label>
                     <input class="form-control" type="password"
